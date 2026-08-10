@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Person_1 = require("./Person");
+console.log("myName: ".concat(Person_1.myName));
+var person1 = new Person_1.Person();
+person1.id = 1;
+person1.name = "Nguyen Van A";
+person1.address = "Ha Noi";
+var person2 = new Person_1.Person();
+person2.id = 2;
+person2.name = "Nguyen Van B";
+person2.address = "Hai Phong";
+console.log("Person 1, id: ".concat(person1.id, ", name: ").concat(person1.name, ", address: ").concat(person1.address));
+console.log("Person 2, id: ".concat(person2.id, ", name: ").concat(person2.name, ", address: ").concat(person2.address));
