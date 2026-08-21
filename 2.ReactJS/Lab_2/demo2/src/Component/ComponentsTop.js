@@ -1,7 +1,47 @@
 // rcc
 import React, { Component } from 'react';
+import ComponentsTopChild from './ComponentsTopChild';
 
 class ComponentsTop extends Component {
+    // Khai báo ra 1 biến để lưu số lần người dùng click vào nút Sentdata
+    // click_number = 0
+
+    // constructor: Hàm này được gọi đầu tiên khi class chạy
+    constructor(props) {
+        super(props);
+        // Khai báo State để lưu trữ dữ liệu
+        // this.state = {
+        //     click_number: 0
+        //     // abc: "daonq"
+        // }
+        this.state = {
+            input_data: ""
+        }
+    }
+    // Khai báo hàm handleChange
+    handleChange = (event) => {
+        this.setState({
+            input_data: event.target.value
+        })
+        console.log("event: ", event);
+
+    }
+
+    // Hàm xử lý sự kiến khi nhấn nút SentData
+    handleClick = () => {
+        // this.click_number = this.click_number + 1
+        // Thay đổi giá trị trong state
+        // this.setState({
+        //     click_number: (this.state.click_number + 1)
+        // })
+        // Tự động được render()
+        // console.log(`click_number: ${this.state.click_number}`);
+        // this.render()
+        let dataTOP = "VTI ACADEMY"
+        this.props.getDataFromTop(dataTOP)
+        console.log(`input Data: ${this.state.input_data}`);
+
+    }
     // Hàm render: hiển thị giao diện của component
     render() {
         // Nhận dữ liệu từ App truyền xuống
@@ -9,7 +49,7 @@ class ComponentsTop extends Component {
         // let data1 = this.props.data1
         // let data2 = this.props.data2
         // Destructuring
-        let { data1, data2, data3, heading } = this.props;
+        let { data1, data2, data3, heading, dataToTopChild } = this.props;
 
         console.log("ComponentsTop: v_data1 = ", data1);
         console.log("ComponentsTop: v_data2 = ", data2);
@@ -26,17 +66,18 @@ class ComponentsTop extends Component {
 
                             <div class="row">
                                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                    <input type="text" class="form-control" id="" placeholder="Input field" />
+                                    <input type="text" class="form-control" id="" placeholder="Input field" value={this.state.input_data} onChange={this.handleChange} />
                                 </div>
 
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                    <button type="button" class="btn btn-danger">Sent Data</button>
+                                    <button type="button" class="btn btn-danger" onClick={this.handleClick}>Sent Data</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
+                <ComponentsTopChild dataToTopChild={dataToTopChild} />
             </div>
         );
     }
