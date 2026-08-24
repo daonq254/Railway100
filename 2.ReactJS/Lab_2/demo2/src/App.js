@@ -1,6 +1,7 @@
 import './App.css';
 import ComponentsBottom from './Component/ComponentsBottom';
 import ComponentsTop from './Component/ComponentsTop';
+import DemoLifeCycle from './Component/DemoLifeCycle';
 
 function App() {
   let data1 = "Hello VTI";
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <ComponentsTop dataToTopChild={dataToTopChild} data1={data1} data2={data2} data3={data3} heading="---- COMPONENT TOP ---" getDataFromTop={getDataFromTop} />
       <ComponentsBottom data1={data1} heading_bottom="-- COMPONENT BOTTOM---" />
+      {/* <DemoLifeCycle /> */}
     </div>
   );
 }
