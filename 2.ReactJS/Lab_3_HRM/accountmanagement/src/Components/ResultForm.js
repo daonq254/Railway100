@@ -2,6 +2,7 @@ import React from 'react';
 import ResultFormItem from './ResultFormItem';
 import { Table } from "reactstrap";
 function ResultForm(props) {
+    let { listAccount } = props
     return (
         <>
             <Table hover>
@@ -19,10 +20,8 @@ function ResultForm(props) {
                     </tr>
                 </thead>
                 <tbody>
+                    <ResultFormItem listAccount={listAccount} />
 
-                    <ResultFormItem />
-                    <ResultFormItem />
-                    <ResultFormItem />
                 </tbody>
             </Table>
 

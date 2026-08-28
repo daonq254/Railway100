@@ -2,9 +2,14 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 function CreateButton(props) {
+    let { onHandleCreateButton } = props
+
+    let handleCreateNewAccount = () => {
+        onHandleCreateButton();
+    }
     return (
         <>
-            <Button color="primary">Create New Account</Button>
+            <Button color="primary" onClick={handleCreateNewAccount}>Create New Account</Button>
         </>
     );
 }
