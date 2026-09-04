@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { api } from '../../API/api';
 function InputForm(props) {
     // Destructuring
-    let { onHandleCreateNewAccount } = props
+    let { onHandleCreateNewAccount, listDepartment, listPosition } = props
 
     // Khai báo các state để quản lý dữ liệu cho các ô nhập liệu
     let [Email, setEmail] = useState("")
@@ -18,18 +19,39 @@ function InputForm(props) {
         // console.log(`Fullname: ${Fullname}`);
         // console.log(`Department: ${Department}`);
         // console.log(`Postion: ${Postion}`);
+        // api
+        // {
+        //     "email": "daonq1009@viettel.com",
+        //     "username": "daonq1009",
+        //     "fullname": "daonq1009",
+        //     "departmentId": "2",
+        //     "positionId": "2"
+        //   }
         let accountNew = {
-            id: 1,
+            // id: 1,
             email: Email,
             username: Username,
             fullname: Fullname,
-            department: Department,
-            position: Postion,
-            createDate: "28/08/2026"
+            departmentId: Department,
+            positionId: Postion,
+            // createDate: "28/08/2026"
         }
         onHandleCreateNewAccount(accountNew)
     }
+
+    // Tạo danh sách phòng ban
+    let departmentItem = listDepartment.map((department, index) => {
+        return (
+            <option value={department.id}>{department.name}</option>
+        )
+    })
     // 
+    // Tạo danh sách Position
+    let positionItem = listPosition.map((position, index) => {
+        return (
+            <option value={position.id}>{position.name}</option>
+        )
+    })
     return (
         <>
             <Form>
@@ -87,11 +109,12 @@ function InputForm(props) {
                             SetDepartment(event.target.value);
                         }}
                     >
-                        <option value={"Bán hàng"}>Bán hàng</option>
+                        {departmentItem}
+                        {/* <option value={"Bán hàng"}>Bán hàng</option>
                         <option value={"Bảo vệ"}>Bảo vệ</option>
                         <option value={"Giám đốc"}>Giám đốc</option>
                         <option value={"Kỹ thuật"}>Kỹ thuật</option>
-                        <option value={"Marketing"}>Marketing</option>
+                        <option value={"Marketing"}>Marketing</option> */}
                     </Input>
                 </FormGroup>
 
@@ -103,10 +126,11 @@ function InputForm(props) {
                         onChange={(event) => {
                             SetPostion(event.target.value);
                         }}>
-                        <option value={"Dev"}>Dev</option>
+                        {/* <option value={"Dev"}>Dev</option>
                         <option value={"Test"}>Test</option>
                         <option value={"Scrum_Master"}>Scrum_Master</option>
-                        <option value={"PM"}>PM</option>
+                        <option value={"PM"}>PM</option> */}
+                        {positionItem}
                     </Input>
                 </FormGroup>
             </Form>

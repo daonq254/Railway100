@@ -3,7 +3,8 @@ import { Button } from "reactstrap";
 
 function ResultFormItem(props) {
     let { listAccount } = props
-    // 
+    // render element
+    // map: lặp qua mỗi phần tử, và tạo ra phần tử trong mảng mới từ phần tử hiện tại
     let items = listAccount.map((account, index) => {
         return (
             <tr>
