@@ -1,6 +1,7 @@
 console.log("Demo Redux Core!!");
 
 import { createStore } from "redux";
+import { use } from 'react';
 
 // Bước 3: Khai báo các State cần quản lý
 let initialState = {
@@ -26,6 +27,15 @@ let reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showForm: false
+            }
+
+        case "ADD_ACCOUNT":
+            // action.account
+            // 
+
+            return {
+                ...state,
+                listAccount: [...state.listAccount, action.account]
             }
 
         default:
@@ -55,3 +65,25 @@ let actionCloseInputForm = {
 store.dispatch(actionCloseInputForm);
 
 console.log("State showForm trước khi được thay đổi bởi Redux: ", store.getState()); // false
+
+// Khai báo action để thêm Account vào listAccount
+let actionAddAccount1 = {
+    type: "ADD_ACCOUNT",
+    account: {
+        id: 1,
+        username: "daonq1",
+        fullname: "NguyenDao1"
+    }
+}
+
+let actionAddAccount2 = {
+    type: "ADD_ACCOUNT",
+    account: {
+        id: 2,
+        username: "daonq2",
+        fullname: "NguyenDao2"
+    }
+}
+store.dispatch(actionAddAccount1);
+store.dispatch(actionAddAccount2);
+console.log("State listAccount sau khi được thay đổi bởi Redux: ", store.getState()); // false
