@@ -20,9 +20,8 @@ let routes = (<Routes>
     />
     <Route path="/Login" element={<Login />} />
     <Route path="/Sign_Up" element={<SignUp />} />
-    <Route path="/AccountDetail" element={<AccountDetail />} />
+    <Route path="/AccountDetail/:id" element={<AccountDetail />} />
     <Route path="*" element={<Error />} />
-
 </Routes>)
 
 export { routes }

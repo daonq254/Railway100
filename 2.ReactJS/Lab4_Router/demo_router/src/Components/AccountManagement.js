@@ -34,7 +34,7 @@ function AccountManagement(props) {
         return (<tr>
             <td>{account.ID}</td>
             <td>
-                <Link to={"/AccountDetail"}>{account.Email}</Link>
+                <Link to={"/AccountDetail/" + account.ID}>{account.Email}</Link>
             </td>
         </tr>)
     }
