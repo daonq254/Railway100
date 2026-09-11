@@ -1,12 +1,19 @@
 import React, { use, useState } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import InputForm from './InputForm';
+import { useSelector } from "react-redux";
 
 function ModalCreateNewAccount(props) {
-    let { showForm, onHandleClose, onHandleCreateNewAccount, listDepartment, listPosition } = props
+    let { onHandleClose, onHandleCreateNewAccount, listDepartment, listPosition } = props
     let handleClose = () => {
         onHandleClose();
     }
+    // 
+    let stateRedux = useSelector((state) => state)
+    // 
+    console.log("stateRedux", stateRedux);
+    let showForm = stateRedux.formState.showForm
+
     return (
         <>
             <Modal isOpen={showForm} >

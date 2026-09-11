@@ -8,6 +8,9 @@ import { getListDepartmentAPI } from '../API/DepartmentAPI';
 import { getListPositionAPI } from '../API/PositionAPI';
 
 function AccountContainer(props) {
+    // Khai báo State quản lý ẩn hiện của modal create new account
+    // let [showForm, setShowForm] = useState(false)
+
     // Khai báo State listAccount để quản lý danh sách account
     let [listAccount, setListAccount] = useState([])
 
@@ -17,19 +20,18 @@ function AccountContainer(props) {
     // Khai báo State để quản lý danh sách position trên hệ thống
     let [listPosition, setListPosition] = useState([]);
 
-    // Khai báo State quản lý ẩn hiện của modal create new account
-    let [showForm, setShowForm] = useState(false)
+
     // Khai báo hàm callback để xử lý sự kiện nkhi nhấn nút CreateButton
     let onHandleCreateButton = () => {
         // 
         // console.log("click click!");
-        setShowForm(true)
+        // setShowForm(true)
 
     }
     // Khai báo hàm callback onHandleClose xử lý khi nhấn nút close ở modal
     let onHandleClose = () => {
         // 
-        setShowForm(false)
+        // setShowForm(false)
 
     }
     // Khai báo hàm callback xử lý việc thêm mới Account
@@ -40,7 +42,7 @@ function AccountContainer(props) {
         // localStorage.setItem("listAccount", JSON.stringify(listAccount))
         addAccountNewAPI(account_new).then((response) => {
             // 
-            setShowForm(false)
+            // setShowForm(false)
             // Load lại danh sách account từ API
             getListAccountAPI().then((listAccountAPI) => {
                 setListAccount(listAccountAPI)
@@ -90,7 +92,7 @@ function AccountContainer(props) {
     return (
         <div>
             <CreateButton onHandleCreateButton={onHandleCreateButton} />
-            <ModalCreateNewAccount showForm={showForm} onHandleClose={onHandleClose} onHandleCreateNewAccount={onHandleCreateNewAccount} listDepartment={listDepartment} listPosition={listPosition} />
+            <ModalCreateNewAccount onHandleClose={onHandleClose} onHandleCreateNewAccount={onHandleCreateNewAccount} listDepartment={listDepartment} listPosition={listPosition} />
             <ResultForm listAccount={listAccount} />
         </div>
     );
