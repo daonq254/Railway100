@@ -1,54 +1,55 @@
 console.log("Demo Redux Core!!");
 
 import { createStore } from "redux";
-import { use } from 'react';
+import { ADD_ACCOUNT, CLOSE_FORM, SHOW_FORM } from "./Constants/ActionType";
+import RootReducer from "./Reducers/rootReducer";
 
-// Bước 3: Khai báo các State cần quản lý
-let initialState = {
-    showForm: false,
-    listAccount: []
-}
+// // Bước 3: Khai báo các State cần quản lý
+// let initialState = {
+//     showForm: false,
+//     listAccount: []
+// }
 
-// Bước 2 tạo Reducer
-let reducer = (state = initialState, action) => {
+// // Bước 2 tạo Reducer
+// let reducer = (state = initialState, action) => {
 
-    switch (action.type) {
-        case "SHOW_FORM":
-            // 
-            // 
-            return {
-                ...state,
-                showForm: true
-            }
+//     switch (action.type) {
+//         case SHOW_FORM:
+//             // 
+//             // 
+//             return {
+//                 ...state,
+//                 showForm: true
+//             }
 
-        case "CLOSE_FORM":
-            // 
-            // 
-            return {
-                ...state,
-                showForm: false
-            }
+//         case CLOSE_FORM:
+//             // 
+//             // 
+//             return {
+//                 ...state,
+//                 showForm: false
+//             }
 
-        case "ADD_ACCOUNT":
-            // action.account
-            // 
+//         case "ADD_ACCOUNT":
+//             // action.account
+//             // 
 
-            return {
-                ...state,
-                listAccount: [...state.listAccount, action.account]
-            }
+//             return {
+//                 ...state,
+//                 listAccount: [...state.listAccount, action.account]
+//             }
 
-        default:
-            return state;
-    }
-}
+//         default:
+//             return state;
+//     }
+// }
 
 // Bước 1 tạo Store của redux
-let store = createStore(reducer)
+let store = createStore(RootReducer)
 
 // Bước 4: Khai báo Action
 let actionShowInputForm = {
-    type: "SHOW_FORM"
+    type: SHOW_FORM
 }
 // Demo khi người dùng nhấn nút Create Account để ẩn hiện InputForm
 console.log("State showForm trước khi được thay đổi bởi Redux: ", store.getState());  // false
@@ -60,7 +61,7 @@ console.log("State showForm trước khi được thay đổi bởi Redux: ", st
 
 // Bước 4: Khai báo Action
 let actionCloseInputForm = {
-    type: "CLOSE_FORM"
+    type: CLOSE_FORM
 }
 store.dispatch(actionCloseInputForm);
 
@@ -68,7 +69,7 @@ console.log("State showForm trước khi được thay đổi bởi Redux: ", st
 
 // Khai báo action để thêm Account vào listAccount
 let actionAddAccount1 = {
-    type: "ADD_ACCOUNT",
+    type: ADD_ACCOUNT,
     account: {
         id: 1,
         username: "daonq1",
@@ -77,7 +78,7 @@ let actionAddAccount1 = {
 }
 
 let actionAddAccount2 = {
-    type: "ADD_ACCOUNT",
+    type: ADD_ACCOUNT,
     account: {
         id: 2,
         username: "daonq2",
